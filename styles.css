@@ -1,0 +1,134 @@
+:root {
+  --clrdark: rgb(26, 26, 68);
+  --clrpink: #ff308f;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: rgb(26, 26, 68);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 4rem;
+}
+.container .btn-empty,
+.container .btn-solid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+}
+
+.container .btn-empty .empty,
+.container .btn-solid .solid {
+  position: relative;
+  padding: 1rem 3rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 1px var(--clrpink), 0 0 20px 2px var(--clrpink),
+    0 0 20px var(--clrpink) inset, 0 120px 50px -40px var(--clrpink),
+    0 120px 50px -40px var(--clrpink), 0 120px 50px -40px var(--clrpink);
+
+  border: 5px solid var(--clrpink);
+  font-size: 2.2rem;
+  cursor: pointer;
+  transition: 0.1s ease-in-out;
+  font-weight: 800;
+}
+
+.container .btn-empty .empty {
+  background: var(--clrdark);
+  color: var(--clrpink);
+}
+
+.container .btn-solid .solid {
+  background: var(--clrpink);
+  color: var(--clrdark);
+}
+
+.container .btn-empty .empty:hover {
+  background: var(--clrpink);
+  color: var(--clrdark);
+  transform: scale(1.2);
+}
+
+.container .btn-solid .solid:hover {
+  background: var(--clrdark);
+  color: var(--clrpink);
+  transform: scale(1.2);
+}
+
+.empty::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: -10px;
+  width: 20px;
+  height: 20px;
+  background: var(--clrpink);
+  border-radius: 50%;
+  border: none;
+  animation: ballRotation 5s linear infinite;
+  color: #03bcf4;
+  box-shadow: 0 0 10px #03bcf4, 0 0 20px #03bcf4, 0 0 40px #03bcf4,
+    0 0 80px #03bcf4, 0 0 160px #03bcf4;
+  z-index: 1;
+}
+.solid::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: -10px;
+  width: 20px;
+  height: 20px;
+  background: var(--clrpink);
+  border-radius: 50%;
+  border: none;
+  animation: ballRotation 1s linear infinite;
+  box-shadow: 0 0 10px #03bcf4, 0 0 20px #03bcf4, 0 0 40px #03bcf4,
+    0 0 80px #03bcf4, 0 0 160px #03bcf4;
+  z-index: 1;
+}
+
+.container .btn-empty:hover .empty::before {
+  transform: scale(2);
+  background: #fff;
+}
+.container .btn-solid:hover .solid::before {
+  background: #fff;
+}
+
+@keyframes ballRotation {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  12.5% {
+    transfrom: translateX(100px);
+  }
+  25% {
+    transform: translateX(200px);
+  }
+  37.5% {
+    transform: translate(200px, 50px);
+  }
+  50% {
+    transform: translate(200px, 100px);
+  }
+  62.5% {
+    transform: translate(100px, 100px);
+  }
+  75% {
+    transform: translate(0, 100px);
+  }
+}
